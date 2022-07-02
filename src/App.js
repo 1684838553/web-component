@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Badge1 from "./badge/badge";
+import { Avatar, Badge } from "antd";
+import "./app.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Badge count={444} color="blue" title="blue" dot>
+        {/* <div>gggg</div> */}
+
+        <Avatar shape="square" size="large" />
+      </Badge>
+
+      <div className="badge-content">
+        <Badge1 count={222} color="blue" title="blue" dot={true}>
+          {/* <div>gggg</div> */}
+          <Avatar shape="square" size="large" />
+        </Badge1>
+      </div>
     </div>
   );
 }
