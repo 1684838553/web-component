@@ -33,6 +33,20 @@
   box-shadow: 0 0 0 1px #fff;
 }
 
+.ui-badge-count-sm {
+  height: 14px;
+  line-height: 14px;
+  border-radius: 7px;
+}
+
+.ui-badge-count-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  transform-origin: 100% 0%;
+}
+
 .ui-badge-dot {
   position: absolute;
   top: 0;
@@ -46,4 +60,24 @@
   background: #ff4d4f;
   border-radius: 100%;
   box-shadow: 0 0 0 1px #fff;
+}
+
+.ui-badge-status-success {
+  background: #52c41a;
+}
+
+.ui-badge-status-processing {
+  background: #1890ff;
+}
+
+.ui-badge-status-default {
+  background: #d9d9d9;
+}
+
+.ui-badge-status-error {
+  background: #ff4d4f;
+}
+
+.ui-badge-status-warning {
+  background: #faad14;
 }
