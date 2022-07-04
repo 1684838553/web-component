@@ -20,22 +20,29 @@ export default function Badge1(props) {
   const [showDot, setShowDot] = useState(dot);
   const [UIBadgeStyle, setUIBadgeStyle] = useState({});
   const [backgroundColor, setBackgroundColor] = useState(color);
+  const [isShowDom, setIsShowDom] = useState(showZero)
 
   useEffect(() => {
     // count 类型为number时 超过定义的最大值，展示 最大值+
     if (typeof count === "number" && count > overflowCount) {
       setShowCount(`${overflowCount}+`);
+    }
+
+    // showZero 为 true时，为 0 展示出来；默认为0时，不展示
+    if ((count === 0 || count === '0') && !showZero) {
+      setIsShowDom(false)
     } else {
-      // 如果 count 是一个元素节点，设置的 背景色无效
-      setBackgroundColor(undefined);
+      setIsShowDom(true)
     }
 
     // 设置颜色，并且没有传children ，dot 为true
+    // dot为true时，text失效
 
     // 状态 ： 设置状态属性，传入children，status属性失效
-
-    if ((color || status) && !children) {
+    if (((color || status) || dot) && !children) {
       setShowDot(true);
+    } else {
+      setShowDot(false);
     }
 
     // count 时图标时，直接展示图标，设置的其他属性，如颜色，dot,status,size失效
@@ -65,10 +72,12 @@ export default function Badge1(props) {
     };
   }, [offset, UIBadgeStyle]);
 
+
+
   return (
     <span className="ui-badge">
       {children}
-      {!dot ? (
+      {!showDot && isShowDom ? (
         <span
           className={[
             typeof showCount === "object"
@@ -83,16 +92,19 @@ export default function Badge1(props) {
           {showCount}
         </span>
       ) : null}
-      {dot ? (
+      {showDot ? (
         <span
           className={[
-            "ui-badge-dot",
-            status ? `ui-badge-status-${status}` : "",
+            dot ? "ui-badge-dot" : '',
+            status ? `ui-badge-status-dot ui-badge-status-${status}` : "",
           ].join(" ")}
           title={title ?? count}
           style={{ ...UIBadgeStyle, ...mergedStyle }}
         ></span>
       ) : null}
+      {
+        showDot && text && !dot ? <span className="ui-badge-status-text">{text}</span> : null
+      }
     </span>
   );
 }
