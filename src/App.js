@@ -1,6 +1,6 @@
 import Badge1 from "./badge/badge";
 import { Avatar, Badge } from "antd";
-import "./app.css";
+import "./App.css";
 import { ClockCircleOutlined } from "@ant-design/icons";
 
 function App() {
